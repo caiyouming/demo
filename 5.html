@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="budget" placeholder="请输入预算金额">
+  <input type="text" id="num" placeholder="请输入每种产品单价">
+  <button id="getRe">计算结果</button>
+  <script>
+    var budget = document.getElementById('budget'),
+        num = document.getElementById('num'),
+        getRe = document.getElementById('getRe'),
+        inNum = num.value;
+    if(inNum >=10000) inNum=10000;
+    getRe.onclick = function(){
+      var numArr = inNum.split(' ');
+      var getArr = numArr.sort(function(a,b){
+        return b-a
+      });
+      var ReNum = 0,temp = 0;
+      console.log(getArr)
+      for(var i=0;i<getArr.length;i++){ 
+        temp += Number(getArr[i]);
+        if(temp <= budget.value){
+          ReNum = temp;
+        }
+      };
+      alert(ReNum)
+    }
+  </script>
+</body>
+</html> 

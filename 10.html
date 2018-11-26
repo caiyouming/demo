@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+  <style>
+    #box{
+      width: 600px;
+      margin: 0px auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    #box li{
+      width: 100px;
+      height: 100px;
+      background: white;
+    }
+    #box .active1{
+      background: red;
+    }
+    #box .active{
+      background: blue;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="num" placeholder="请输入数量"><button id="btn">提交</button>
+  <ul id="box"></ul>
+  <script>
+    var num = document.getElementById('num');
+    var box = document.getElementById('box');
+    var btn = document.getElementById('btn');
+    btn.onclick=function(){
+      var getNum = num.value,
+          html = '';
+      for(var i=0;i<getNum;i++){
+        html +=`<li></li>`
+      }
+      box.innerHTML = html;
+    }
+    box.onmouseover = function(e){
+      if(e.target.nodeName='LI'){
+        if(e.target.className==''){
+          e.target.className = 'active1'
+        }
+      }
+    }
+    box.onmouseout = function(e){
+      if(e.target.nodeName='LI'){
+        if(e.target.className=='active1'){
+          e.target.className = ''
+        }
+      }
+    }
+    box.onclick = function(e){
+      if(e.target.nodeName='LI'){
+        if(e.target.className=='active'){
+          e.target.className = ''
+        }else{
+          e.target.className = 'active'
+        }
+      }
+    }
+    
+  </script>
+</body>
+</html>
